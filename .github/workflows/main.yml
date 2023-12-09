@@ -22,31 +22,44 @@ jobs:
         run: |
           npm install
           npx playwright install
+          npm install -g allure-commandline
 
       - name: Start API server
         run: npm start &
 
-      - name: Run Playwright tests
-        run: npm test
-
+      - name: Run Playwright tests and generate Allure reports
+        run: |
+          npm test
+          
       - name: Upload Playwright reports to S3
         uses: actions/upload-artifact@v2
         with:
           name: playwright-reports
-          path: test-results/
-
+          path: |
+            test-results/
+            allure-report/
+          
+      - name: Install AWS CLI
+        run: |
+          sudo apt-get install -y awscli
+      
       - name: Upload to S3
         run: |
           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws s3 cp test-results/ s3://nikhiltestjava/playwright-reports/ --recursive
+          aws s3 cp allure-report/ s3://nikhiltestjava/playwright-reports/allure-report/ --recursive
+          
         env:
           AWS_REGION: ap-south-1
       
-      - name: Set output variable for report link
+      - name: Set output variable for report link & allure-report link
         id: set-output
-        run: echo "REPORT_LINK=https://nikhiltestjava.s3.ap-south-1.amazonaws.com/playwright-reports/results.xml" >> $GITHUB_ENV
-
+        run: |
+          echo "REPORT_LIN1=https://nikhiltestjava.s3.ap-south-1.amazonaws.com/playwright-reports/results.xml" >> $GITHUB_ENV
+          echo "REPORT_LINK2=https://nikhiltestjava.s3.ap-south-1.amazonaws.com/playwright-reports/allure-report/index.html" >> $GITHUB_ENV
+          
       - name: Display report link
-        run: echo "Playwright test report is available at $REPORT_LINK"
- 
+        run: |
+         echo "Playwright test report is available at $REPORT_LINK1"
+         echo "Allure test report is available at $REPORT_LINK2"

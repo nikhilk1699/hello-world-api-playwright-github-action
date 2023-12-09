@@ -42,7 +42,11 @@ jobs:
           aws s3 cp test-results/ s3://nikhiltestjava/playwright-reports/ --recursive
         env:
           AWS_REGION: ap-south-1
-
-      - name: Set report link output
-        id: set-report-link
+      
+      - name: Set output variable for report link
+        id: set-output
         run: echo "::set-output name=report-link::https://nikhiltestjava.s3.ap-south-1.amazonaws.com/playwright-reports/results.xml"
+
+      - name: Display report link
+        run: echo "Playwright test report is available at ${{ steps.set-output.outputs.report-link }}"
+ 

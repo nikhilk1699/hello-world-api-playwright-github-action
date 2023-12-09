@@ -1,0 +1,1 @@
+{"tests/api.test.js:tests/api.test.js#should return Hello, World!":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"73f17bfc094d7d6e","status":"passed","time":{"start":1702125817075,"stop":1702125819218,"duration":2143}}]}}

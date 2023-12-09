@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js &",
-    "test": "playwright test"
+    "test": "playwright test &&  allure generate test-results --clean && allure open &"
   },
   "author": "",
   "license": "ISC",
@@ -14,5 +14,8 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "playwright": "^1.40.1"
+  },
+  "devDependencies": {
+    "allure-playwright": "^2.9.2"
   }
 }

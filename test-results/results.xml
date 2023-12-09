@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="3.6601790000000003">
+<testsuite name="tests/api.test.js" timestamp="2023-12-09T12:43:37.075Z" hostname="" tests="1" failures="0" skipped="0" time="2.143" errors="0">
+<testcase name="should return Hello, World!" classname="tests/api.test.js" time="2.143">
+</testcase>
+</testsuite>
+</testsuites>

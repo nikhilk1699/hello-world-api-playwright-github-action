@@ -53,13 +53,13 @@ jobs:
         env:
           AWS_REGION: ap-south-1
       
-      - name: Set output variable for report link & allure-report link
+      - name: Set output variable for report links
         id: set-output
         run: |
-          echo "REPORT_LIN1=https://nikhiltestjava.s3.ap-south-1.amazonaws.com/playwright-reports/results.xml" >> $GITHUB_ENV
-          echo "REPORT_LINK2=https://nikhiltestjava.s3.ap-south-1.amazonaws.com/playwright-reports/allure-report/index.html" >> $GITHUB_ENV
+          echo "REPORT_LINK_PLAYWRIGHT=https://nikhiltestjava.s3.ap-south-1.amazonaws.com/playwright-reports/results.xml" >> $GITHUB_ENV
+          echo "REPORT_LINK_ALLURE=https://nikhiltestjava.s3.ap-south-1.amazonaws.com/playwright-reports/allure-report/index.html" >> $GITHUB_ENV
           
-      - name: Display report link
+      - name: Display report links
         run: |
-         echo "Playwright test report is available at $REPORT_LINK1"
-         echo "Allure test report is available at $REPORT_LINK2"
+         echo "Playwright test report is available at $REPORT_LINK_PLAYWRIGHT"
+         echo "Allure test report is available at $REPORT_LINK_ALLURE"

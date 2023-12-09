@@ -43,9 +43,6 @@ jobs:
         env:
           AWS_REGION: ap-south-1
 
-      - name: Set output variable with S3 URL
-        id: set-output
-        run: echo "REPORT_URL=https://nikhiltestjava.s3.ap-south-1.amazonaws.com/playwright-reports/results.xml" >> $GITHUB_ENV
-
-      - name: Display report link
-        run: echo "Playwright report is available at ${{ steps.set-output.outputs.REPORT_URL }}"
+      - name: Set report link output
+        id: set-report-link
+        run: echo "::set-output name=report-link::https://nikhiltestjava.s3.ap-south-1.amazonaws.com/playwright-reports/results.xml"

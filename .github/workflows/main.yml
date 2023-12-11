@@ -48,7 +48,7 @@ jobs:
           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws s3 cp test-results/ s3://nikhiltestjava/playwright-reports/ --recursive
-          aws s3 cp allure-results/ s3://nikhiltestjava/playwright-reports/allure-results --recursive
+          aws s3 cp allure-results/ s3://nikhiltestjava/playwright-reports/ --recursive
           
         env:
           AWS_REGION: ap-south-1
@@ -57,7 +57,7 @@ jobs:
         id: set-output
         run: |
           echo "REPORT_LINK_PLAYWRIGHT=https://nikhiltestjava.s3.ap-south-1.amazonaws.com/playwright-reports/results.xml" >> $GITHUB_ENV
-          echo "REPORT_LINK_ALLURE=https://nikhiltestjava.s3.ap-south-1.amazonaws.com/playwright-reports/allure-results/index.html" >> $GITHUB_ENV
+       #   echo "REPORT_LINK_ALLURE=https://nikhiltestjava.s3.ap-south-1.amazonaws.com/playwright-reports/allure-results/index.html" >> $GITHUB_ENV
           
       - name: Display report links
         run: |

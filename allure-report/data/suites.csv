@@ -1,2 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Sat Dec 09 12:43:37 UTC 2023","Sat Dec 09 12:43:39 UTC 2023","2143","","tests/api.test.js","","tests/api.test.js","","should return Hello, World!",""
